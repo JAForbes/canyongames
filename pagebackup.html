@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<base target="_parent" />
+		<script type="text/javascript"></script>
+		<script src="validsearch.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://dl.dropbox.com/u/4861305/style.css">
+	</head>
+	<body onload="document.getElementById('page-content').src=getArgument();">
+		<div id="navbar">
+			<a href="./me.html" target="page-content">
+				<div id="back-button">
+					<canvas id="myCanvas" width="100%" height="100%">Your browser does not support the HTML5 canvas tag.</canvas>
+					<script>
+					
+						//drawHouse
+						var c=document.getElementById("myCanvas");
+						var ctx=c.getContext("2d");
+						
+						ctx.beginPath();
+						ctx.moveTo(20,12);
+						ctx.lineTo(20,32);
+						ctx.lineTo(40,32);
+						ctx.lineTo(40,12);
+						ctx.closePath();
+						ctx.fillStyle="#ffffff";
+						ctx.fill();
+						
+						ctx.beginPath();
+						ctx.moveTo(15,17);
+						ctx.lineTo(30,4);
+						ctx.lineTo(45,17);
+						ctx.closePath();
+						ctx.fillStyle="#ffffff";
+						ctx.fill();
+					</script>
+				</div>
+			</a>
+			<div id="contact">
+				<a href="./twitter.html" target="page-content">
+						<img width="100%" height="100%" src="./page_files/contact_img.png">
+				</a>
+			</div>
+		</div>
+		<div id="topbar">
+			<div id="heading">CANYON</div>
+			<div id="top-message">A place for me to upload things I make</div>
+		</div>
+		<div id="container">
+			<div id="sidebar">
+				<iframe src="./sidebar.html" scrolling="no" frameborder="0" width="100%" height="1500px"></iframe>
+			</div>
+			
+			<div id="flashthing">
+				<iframe name="page-content" src="./me.html" scrolling="no" frameborder="0" height="800px" width="800px"></iframe>
+				<script>
+					var url = (window.location != window.parent.location) ? document.referrer: document.location;
+					if(url.indexOf("?")>-1)
+					{
+						var search = url.substring(url.indexOf("?")+1, url.length);
+						var result = getURLfromSearchTerm(search);
+						if(result!==undefined)
+						{
+							document.getElementsByName("page-content")[0].src=result;
+						}
+					}
+				</script>
+				<!--
+					<embed xmlns="http://www.w3.org/1999/xhtml" height="500" pluginspage="http://www.macromedia.com/go/getflashplayer" src="https://sites.google.com/site/canyongames/rakau/bin/Rakau.swf" width="500" />
+				-->
+			</div>
+			<div id="footer">
+				<center><p>© 2013 <a href="./me.html" target="page-content">James Forbes</a>. All rights reserved</p></center>
+				<center><p>Portrait illustrated by Zoe Calton</p></center>
+				<center><p>This site may not display correctly on mobile browsers.</p></center>
+			</div>
+		</div>
+			
+		
+	</body>
+</html>

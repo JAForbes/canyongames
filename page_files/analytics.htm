@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)http://assets.tumblr.com/analytics.html?454db5d3af85441a56cc9a68c1e9beb4 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Tumblr</title>
+        
+        <meta name="robots" content="noindex, nofollow">
+        <link rel="icon" href="http://assets.tumblr.com/images/favicon.gif?2" type="image/gif">
+
+        <script async="" src="beacon.js"></script><script type="text/javascript" async="" src="ga.js"></script><script type="text/javascript">
+            var _comscore = _comscore || [];
+            function get_url_var(get_var) {
+                var vars = [];
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                    vars[key] = value;
+                });
+
+                if (get_var) {
+                    if (typeof vars[get_var] == 'undefined') {
+                        return;
+                    }
+
+                    return vars[get_var];
+                }
+
+                return vars;
+            }
+
+            /* Tumblr.PostMessageListener -- Copied from tumblelog_src.js */
+            var Tumblr = {};
+            Tumblr.PostMessageListener = (function(){
+                return {
+                    initialize : function(callback){
+                        callback = callback || function(){};
+                        // http://davidwalsh.name/window-iframe
+                        // Create IE + others compatible event handler
+                        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+                        var eventer = window[eventMethod];
+                        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+                        // Listen to message from child window
+                        eventer(messageEvent,function(e) {
+                            var message = e.data.split(';');
+                            callback(message, e.origin);
+                        },false);
+                    }
+                };
+            })();
+
+            function handle_post_message(message, origin) {
+                switch (message[0]) {
+                    case 'openInMobileApp':
+                        var post_id = parseInt(message[1]),
+                            custom_event = ['_trackEvent', 'Mobile', 'Clicked', 'Open in Mobile App', post_id ];
+
+                        _gaq.push(custom_event);
+
+                        parent.postMessage('openInMobileAppSuccess' + ';' + post_id, message[2]);
+                        break;
+
+                    case 'enable_comscore':
+                        var url = (window.location != window.parent.location) ? document.referrer: document.location.href;
+                        _comscore.push({ c1: "2", c2: 15742520, c4: url });
+                        (function(){ var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true; s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js"; el.parentNode.insertBefore(s, el); })();
+                        break;
+                        
+                    case 'tick_comscore':
+                        
+                        break;
+                }
+            }
+
+            var _gaq = [['_setAccount', 'UA-97144-8'], ['_trackPageview', get_url_var('custom')]];
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                Tumblr.PostMessageListener.initialize(handle_post_message);
+            })();
+        </script>
+        <noscript>&lt;img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=15742520&amp;cv=2.0&amp;cj=1" /&gt;</noscript>
+    </head>
+    <body>
+    
+</body></html>

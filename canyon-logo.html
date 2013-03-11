@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <style>
+          *
+          {
+            background: rgba(255, 255, 255, 1);
+          }
+        </style>
+        <script type="text/javascript" src="./canyon-logo-drawing.js"></script>
+        <script src="canyon-logo-drawing.js"></script>
+  </head>
+  <body>
+    <canvas id="canyon-canvas" width="180" height="155"></canvas>
+    <script>
+      var posX=10;
+      var posY=100;
+      drawCanyonShadow(posX,posY+5,75,"rgba(255,0,255,0.8)",-1.4,5.5);
+      
+      drawMountain(posX,posY,100,90,"rgba(0,0,255,0.5)","Black");
+      drawMountain(posX+55,posY+50,110,100,"rgba(0,0,255,0.8)","Black");
+    </script>
+  </body>
+</html>
